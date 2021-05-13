@@ -9,9 +9,11 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			// this.belongsToMany(models.Actors, {
-			// 	through: models.ContentActors,
-			// });
+			this.belongsToMany(models.Actors, {
+				through: models.ContentActors,
+				foreignKey: "content_id",
+				sourceKey: "id",
+			});
 			// this.belongsToMany(models.Directors, {
 			// 	through: models.ContentDirectors,
 			// });
