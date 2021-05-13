@@ -1,0 +1,272 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "IMDB REST API",
+		"version": "1.0",
+		"description": "Obtain information about movies, shows, actors, and directors through this REST API."
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8000/api/v1",
+			"description": "development"
+		}
+	],
+	"paths": {
+		"/actors": {
+			"get": {
+				"description": "Get all actors",
+				"tags": ["Actors"],
+				"responses": {
+					"200": {
+						"description": "Actors list"
+					}
+				}
+			},
+			"post": {
+				"description": "Create a new actor entry",
+				"tags": ["Actors"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Actor"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Actor entry has been succesfully created"
+					}
+				}
+			}
+		},
+		"/actors/{id}": {
+			"get": {
+				"description": "Get an actor based on their id",
+				"tags": ["Actors"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the actor to get"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Actor filtered"
+					}
+				}
+			},
+			"put": {
+				"description": "Update an actor's information. Only send the property you are changing, no need to send everything again",
+				"tags": ["Actors"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the actor to update"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Actor"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Actor's information has been succesfully updated"
+					}
+				}
+			},
+			"delete": {
+				"description": "Delete an entry based on the actor's id",
+				"tags": ["Actors"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the actor to delete"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Actor has been succesfully deleted"
+					}
+				}
+			}
+		},
+		"/directors": {
+			"get": {
+				"description": "Get all directors",
+				"tags": ["Directors"],
+				"responses": {
+					"200": {
+						"description": "Directors list"
+					}
+				}
+			},
+			"post": {
+				"description": "Create a new director entry",
+				"tags": ["Directors"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Director"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Director entry has been succesfully created"
+					}
+				}
+			}
+		},
+		"/directors/{id}": {
+			"get": {
+				"description": "Get a director based on their id",
+				"tags": ["Directors"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the director to get"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Director filtered"
+					}
+				}
+			},
+			"put": {
+				"description": "Update a director's information. Only send the property you are changing, no need to send everything again",
+				"tags": ["Directors"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the actor to update"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Director"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Director's information has been succesfully updated"
+					}
+				}
+			},
+			"delete": {
+				"description": "Delete an entry based on the director's id",
+				"tags": ["Directors"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the actor to delete"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Director has been succesfully deleted"
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"Actor": {
+				"properties": {
+					"first_name": {
+						"type": "string"
+					},
+					"last_name": {
+						"type": "string"
+					},
+					"dob": {
+						"type": "date",
+						"description": "Date of birth",
+						"example": "1988-04-18"
+					},
+					"biography": {
+						"type": "text"
+					},
+					"profile_photo": {
+						"type": "string",
+						"description": "image URL",
+						"example": "https://media1.popsugar-assets.com/files/thumbor/vs9z93ysou2tn4ZTfqaO1qywGX4/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/03/19/217/n/41541398/2f67bbb5a14e410e_giphy_27_/i/When-She-Doled-Out-Her-Signature-Catchphrase.gif"
+					},
+					"active": {
+						"type": "boolean"
+					}
+				}
+			},
+			"Director": {
+				"properties": {
+					"first_name": {
+						"type": "string"
+					},
+					"last_name": {
+						"type": "string"
+					},
+					"dob": {
+						"type": "date",
+						"description": "Date of birth",
+						"example": "1988-04-18"
+					},
+					"biography": {
+						"type": "text"
+					},
+					"profile_photo": {
+						"type": "string",
+						"description": "image URL",
+						"example": "https://media1.popsugar-assets.com/files/thumbor/vs9z93ysou2tn4ZTfqaO1qywGX4/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/03/19/217/n/41541398/2f67bbb5a14e410e_giphy_27_/i/When-She-Doled-Out-Her-Signature-Catchphrase.gif"
+					},
+					"active": {
+						"type": "boolean"
+					}
+				}
+			}
+		}
+	}
+}

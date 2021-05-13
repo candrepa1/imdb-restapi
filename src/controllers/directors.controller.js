@@ -29,6 +29,7 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
 	try {
+		const id = req.params.id;
 		const result = await Directors.update(req.body, { where: { id } });
 		res.json(result);
 	} catch (error) {

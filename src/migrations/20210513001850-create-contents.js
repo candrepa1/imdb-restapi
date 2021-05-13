@@ -1,30 +1,44 @@
 "use strict";
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		await queryInterface.createTable("directors", {
+		await queryInterface.createTable("contents", {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 				references: {
+					model: "ContentActors",
+					key: "content_id",
+				},
+				references: {
 					model: "ContentDirectors",
-					key: "director_id",
+					key: "content_id",
+				},
+				references: {
+					model: "ContentGenres",
+					key: "content_id",
 				},
 			},
-			first_name: {
+			title: {
 				type: Sequelize.STRING,
 			},
-			last_name: {
-				type: Sequelize.STRING,
-			},
-			dob: {
-				type: Sequelize.DATEONLY,
-			},
-			biography: {
+			description: {
 				type: Sequelize.TEXT,
 			},
-			profile_photo: {
+			total_seasons: {
+				type: Sequelize.INTEGER,
+			},
+			imdb_score: {
+				type: Sequelize.DECIMAL,
+			},
+			release_date: {
+				type: Sequelize.DATEONLY,
+			},
+			play_time: {
+				type: Sequelize.INTEGER,
+			},
+			imdb_link: {
 				type: Sequelize.STRING,
 			},
 			active: {
@@ -41,6 +55,6 @@ module.exports = {
 		});
 	},
 	down: async (queryInterface, Sequelize) => {
-		await queryInterface.dropTable("directors");
+		await queryInterface.dropTable("contents");
 	},
 };

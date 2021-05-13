@@ -1,30 +1,18 @@
 "use strict";
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		await queryInterface.createTable("directors", {
+		await queryInterface.createTable("genres", {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 				references: {
-					model: "ContentDirectors",
-					key: "director_id",
+					model: "ContentGenres",
+					key: "genre_id",
 				},
 			},
-			first_name: {
-				type: Sequelize.STRING,
-			},
-			last_name: {
-				type: Sequelize.STRING,
-			},
-			dob: {
-				type: Sequelize.DATEONLY,
-			},
-			biography: {
-				type: Sequelize.TEXT,
-			},
-			profile_photo: {
+			name: {
 				type: Sequelize.STRING,
 			},
 			active: {
@@ -41,6 +29,6 @@ module.exports = {
 		});
 	},
 	down: async (queryInterface, Sequelize) => {
-		await queryInterface.dropTable("directors");
+		await queryInterface.dropTable("genres");
 	},
 };

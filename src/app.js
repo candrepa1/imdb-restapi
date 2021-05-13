@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+// Swagger docs ui
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocs = require("../swagger.json");
+
 // Routes
 const actorsRoutes = require("./routes/actors.routes");
 const directorsRoutes = require("./routes/directors.routes");
@@ -11,6 +15,7 @@ const fs = require("fs");
 
 // Middleware
 app.use(express.json());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Morgan logger
 app.use(

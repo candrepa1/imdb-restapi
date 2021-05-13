@@ -2,7 +2,7 @@ const { Actors } = require("../models");
 
 const list = async (req, res, next) => {
 	try {
-		const result = await Actors.findAlls({ raw: true });
+		const result = await Actors.findAll({ raw: true });
 		res.json(result);
 	} catch (error) {
 		next(error);

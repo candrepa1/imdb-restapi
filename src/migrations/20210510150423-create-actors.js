@@ -7,6 +7,10 @@ module.exports = {
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
+				references: {
+					model: "ContentActors",
+					key: "actor_id",
+				},
 			},
 			first_name: {
 				type: Sequelize.STRING,
