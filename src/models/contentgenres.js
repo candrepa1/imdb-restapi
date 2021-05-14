@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
+			this.belongsTo(models.Genres, {
+				foreignKey: "genre_id",
+			});
+			this.belongsTo(models.Contents, {
+				foreignKey: "content_id",
+			});
 		}
 	}
 	ContentGenres.init(

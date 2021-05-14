@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 			// define association here
 			this.belongsToMany(models.Contents, {
 				through: models.ContentGenres,
+				foreignKey: "genre_id",
 			});
 		}
 	}

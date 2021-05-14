@@ -5,10 +5,18 @@ module.exports = {
 			director_id: {
 				type: Sequelize.INTEGER,
 				primaryKey: true,
+				references: {
+					model: "Directors",
+					key: "id",
+				},
 			},
 			content_id: {
 				type: Sequelize.INTEGER,
 				primaryKey: true,
+				references: {
+					model: "Contents",
+					key: "id",
+				},
 			},
 			active: {
 				type: Sequelize.BOOLEAN,

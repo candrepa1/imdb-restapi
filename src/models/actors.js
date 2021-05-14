@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
 			this.belongsToMany(models.Contents, {
 				through: models.ContentActors,
 				foreignKey: "actor_id",
-				sourceKey: "id",
 			});
 		}
 	}

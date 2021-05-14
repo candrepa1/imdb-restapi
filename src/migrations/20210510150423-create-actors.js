@@ -8,7 +8,7 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 				references: {
-					model: "contentactors",
+					model: "ContentActors",
 					key: "actor_id",
 				},
 			},

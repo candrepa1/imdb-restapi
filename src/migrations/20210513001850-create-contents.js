@@ -8,17 +8,17 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 				references: {
-					model: "contentactors",
+					model: "ContentActors",
 					key: "content_id",
 				},
-				// references: {
-				// 	model: "ContentDirectors",
-				// 	key: "content_id",
-				// },
-				// references: {
-				// 	model: "ContentGenres",
-				// 	key: "content_id",
-				// },
+				references: {
+					model: "ContentDirectors",
+					key: "content_id",
+				},
+				references: {
+					model: "ContentGenres",
+					key: "content_id",
+				},
 			},
 			title: {
 				type: Sequelize.STRING,

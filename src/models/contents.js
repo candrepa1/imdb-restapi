@@ -12,14 +12,15 @@ module.exports = (sequelize, DataTypes) => {
 			this.belongsToMany(models.Actors, {
 				through: models.ContentActors,
 				foreignKey: "content_id",
-				sourceKey: "id",
 			});
-			// this.belongsToMany(models.Directors, {
-			// 	through: models.ContentDirectors,
-			// });
-			// this.belongsToMany(models.Genres, {
-			// 	through: models.ContentGenres,
-			// });
+			this.belongsToMany(models.Directors, {
+				through: models.ContentDirectors,
+				foreignKey: "content_id",
+			});
+			this.belongsToMany(models.Genres, {
+				through: models.ContentGenres,
+				foreignKey: "content_id",
+			});
 		}
 	}
 	Contents.init(
