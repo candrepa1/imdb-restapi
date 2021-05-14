@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 // Swagger docs ui
@@ -15,6 +16,7 @@ const fs = require("fs");
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Morgan logger

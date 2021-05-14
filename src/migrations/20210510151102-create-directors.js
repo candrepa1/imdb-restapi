@@ -7,10 +7,6 @@ module.exports = {
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
-				references: {
-					model: "ContentDirectors",
-					key: "director_id",
-				},
 			},
 			first_name: {
 				type: Sequelize.STRING,

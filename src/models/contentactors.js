@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 			sequelize,
 			modelName: "ContentActors",
 			underscored: true,
+			tableName: "contentactors",
 		}
 	);
 	return ContentActors;

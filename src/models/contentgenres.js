@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 			sequelize,
 			modelName: "ContentGenres",
 			underscored: true,
+			tableName: "contentgenres",
 		}
 	);
 	return ContentGenres;

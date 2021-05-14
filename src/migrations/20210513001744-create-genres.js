@@ -7,10 +7,6 @@ module.exports = {
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
-				references: {
-					model: "ContentGenres",
-					key: "genre_id",
-				},
 			},
 			name: {
 				type: Sequelize.STRING,

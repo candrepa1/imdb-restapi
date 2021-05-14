@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
 			sequelize,
 			modelName: "Actors",
 			underscored: true,
+			tableName: "actors",
 		}
 	);
 	return Actors;
