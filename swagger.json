@@ -9,6 +9,10 @@
 		{
 			"url": "http://localhost:8000/api/v1",
 			"description": "development"
+		},
+		{
+			"url": "https://imdb-restapi.herokuapp.com/api/v1",
+			"description": "production"
 		}
 	],
 	"paths": {
