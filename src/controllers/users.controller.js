@@ -38,7 +38,12 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
 	try {
 		const id = req.params.id;
-		const result = await Users.update(req.body, { where: { id } });
+		const { password, email, first_name, last_name } = req.body;
+		const hash = await bcrypt.hash(password, 10);
+		const result = await Users.update(
+			{ email, first_name, last_name, password: hash },
+			{ where: { id } }
+		);
 		res.json(result);
 	} catch (error) {
 		next(error);
