@@ -9,6 +9,7 @@ const swaggerDocs = require("../swagger.json");
 // Routes
 const actorsRoutes = require("./routes/actors.routes");
 const directorsRoutes = require("./routes/directors.routes");
+const usersRoutes = require("./routes/users.routes");
 
 // Logging errors
 const logger = require("morgan");
@@ -36,6 +37,7 @@ app.get("/", (req, res) => res.json({ home: "working" }));
 
 app.use("/api/v1/", actorsRoutes);
 app.use("/api/v1/", directorsRoutes);
+app.use("/api/v1/", usersRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -215,6 +215,106 @@
 					}
 				}
 			}
+		},
+		"/users": {
+			"get": {
+				"description": "Get all users",
+				"tags": ["Users"],
+				"responses": {
+					"200": {
+						"description": "Users list"
+					}
+				}
+			},
+			"post": {
+				"description": "Create a new user entry",
+				"tags": ["Users"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "User entry has been succesfully created"
+					}
+				}
+			}
+		},
+		"/users/{id}": {
+			"get": {
+				"description": "Get an user based on their id",
+				"tags": ["Users"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the user to get"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User filtered"
+					}
+				}
+			},
+			"put": {
+				"description": "Update an user's information. Only send the property you are changing, no need to send everything again",
+				"tags": ["Users"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the user to update"
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/User"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "User's information has been succesfully updated"
+					}
+				}
+			},
+			"delete": {
+				"description": "Delete an entry based on the user's id",
+				"tags": ["Users"],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						},
+						"description": "Numeric ID of the user to delete"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User has been succesfully deleted"
+					}
+				}
+			}
 		}
 	},
 	"components": {
@@ -265,6 +365,28 @@
 						"type": "string",
 						"description": "image URL",
 						"example": "https://media1.popsugar-assets.com/files/thumbor/vs9z93ysou2tn4ZTfqaO1qywGX4/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/03/19/217/n/41541398/2f67bbb5a14e410e_giphy_27_/i/When-She-Doled-Out-Her-Signature-Catchphrase.gif"
+					},
+					"active": {
+						"type": "boolean"
+					}
+				}
+			},
+			"User": {
+				"properties": {
+					"first_name": {
+						"type": "string"
+					},
+					"last_name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"reset_token": {
+						"type": "string"
 					},
 					"active": {
 						"type": "boolean"
