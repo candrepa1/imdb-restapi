@@ -21,11 +21,11 @@ const get = async (req, res, next) => {
 
 const create = async (req, res, next) => {
 	try {
-		const { password, firstName, lastName, email } = req.body;
+		const { password, first_name, last_name, email } = req.body;
 		const hash = await bcrypt.hash(password, 10);
 		const result = await Users.create({
-			first_name: firstName,
-			last_name: lastName,
+			first_name,
+			last_name,
 			email,
 			password: hash,
 		});
