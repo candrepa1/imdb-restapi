@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const multer = require("multer");
+const mimetype = require("mime-types");
 const app = express();
 
 // Swagger docs ui
@@ -15,6 +17,22 @@ const usersRoutes = require("./routes/users.routes");
 // Logging errors
 const logger = require("morgan");
 const fs = require("fs");
+
+// multer storage
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, "./uploads");
+	},
+	filename: (req, file, cb) => {
+		const ext = mimetype.extension(file.mimetype);
+		if (ext !== "pdf") {
+			cb(null, `${file.fieldname}${Date.now()}.${ext}`);
+		} else {
+			const fileError = new Error("The file format is not accepted");
+			cb(fileError, null);
+		}
+	},
+});
 
 // Middleware
 app.use(express.json());
@@ -40,6 +58,13 @@ app.get("/", (req, res) => res.json({ home: "working" }));
 app.use("/api/v1/", actorsRoutes);
 app.use("/api/v1/", directorsRoutes);
 app.use("/api/v1/", usersRoutes);
+app.post("/api/v1/gallery", upload.single("image"), (req, res) => {
+	try {
+		res.send(req.file);
+	} catch (error) {
+		res.status(400).json({ message: error.message });
+	}
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
