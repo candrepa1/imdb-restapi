@@ -19,20 +19,22 @@ const logger = require("morgan");
 const fs = require("fs");
 
 // multer storage
-const storage = multer.diskStorage({
+const actorStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "./uploads");
+		cb(null, "./uploads/actors");
 	},
 	filename: (req, file, cb) => {
 		const ext = mimetype.extension(file.mimetype);
-		if (ext !== "pdf") {
-			cb(null, `${file.fieldname}${Date.now()}.${ext}`);
+		if (ext === "jpg" || ext === "jpeg" || ext === "png") {
+			cb(null, `${file.fieldname}${Date.now()}-actor${req.params.id}.${ext}`);
 		} else {
 			const fileError = new Error("The file format is not accepted");
 			cb(fileError, null);
 		}
 	},
 });
+
+const upload = multer({ storage: storage, limits: { fileSize: 1000000 } });
 
 // Middleware
 app.use(express.json());

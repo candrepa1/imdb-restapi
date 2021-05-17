@@ -47,22 +47,10 @@ const remove = async (req, res, next) => {
 	}
 };
 
-const picture = async (req, res, next) => {
-	try {
-		// const id = req.params.id;
-		// const result = await Actors.update(req.body, { where: { id } });
-		// res.json(result);
-		res.send(req.file);
-	} catch (error) {
-		next(error);
-	}
-};
-
 module.exports = {
 	list,
 	get,
 	create,
 	update,
 	remove,
-	picture,
 };
