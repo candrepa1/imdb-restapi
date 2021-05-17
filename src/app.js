@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-const multer = require("multer");
-const mimetype = require("mime-types");
 const app = express();
 
 // Swagger docs ui
@@ -19,6 +17,9 @@ const logger = require("morgan");
 const fs = require("fs");
 
 // multer storage
+const multer = require("multer");
+const mimetype = require("mime-types");
+
 const actorStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, "./uploads/actors");
@@ -34,7 +35,7 @@ const actorStorage = multer.diskStorage({
 	},
 });
 
-const upload = multer({ storage: storage, limits: { fileSize: 1000000 } });
+const upload = multer({ storage: actorStorage, limits: { fileSize: 1000000 } });
 
 // Middleware
 app.use(express.json());
