@@ -2,14 +2,7 @@ const dotenv = require("dotenv").config();
 
 module.exports = {
 	development: {
-		use_env_variable: "DATABASE_URL",
-		host: "127.0.0.1",
-		dialectOptions: {
-			ssl: {
-				require: true,
-				rejectUnauthorized: false,
-			},
-		},
+		use_env_variable: "DEV_DATABASE_URL",
 	},
 	test: {
 		username: "root",
