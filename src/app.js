@@ -27,7 +27,7 @@ const actorStorage = multer.diskStorage({
 	filename: (req, file, cb) => {
 		const ext = mimetype.extension(file.mimetype);
 		if (ext === "jpg" || ext === "jpeg" || ext === "png") {
-			cb(null, `${file.fieldname}${Date.now()}-actor${req.params.id}.${ext}`);
+			cb(null, `${file.fieldname}${Date.now()}-actor.${ext}`);
 		} else {
 			const fileError = new Error("The file format is not accepted");
 			cb(fileError, null);
