@@ -56,3 +56,8 @@
 ::1 - - [18/May/2021:18:46:04 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
 ::1 - - [18/May/2021:18:46:59 +0000] "GET /api/v1/actors HTTP/1.1" 500 40 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
 ::1 - - [18/May/2021:18:48:43 +0000] "GET /api/v1/actors HTTP/1.1" 200 2 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
+::1 - - [18/May/2021:18:59:10 +0000] "POST /api/v1/gallery HTTP/1.1" 500 40 "-" "PostmanRuntime/7.28.0"
+::1 - - [18/May/2021:19:00:29 +0000] "POST /api/v1/gallery HTTP/1.1" 500 40 "-" "PostmanRuntime/7.28.0"
+::1 - - [18/May/2021:19:02:17 +0000] "POST /api/v1/gallery HTTP/1.1" 500 40 "-" "PostmanRuntime/7.28.0"
+::1 - - [18/May/2021:19:03:01 +0000] "POST /api/v1/gallery HTTP/1.1" 500 40 "-" "PostmanRuntime/7.28.0"
+::1 - - [18/May/2021:19:03:39 +0000] "POST /api/v1/gallery HTTP/1.1" 200 352 "-" "PostmanRuntime/7.28.0"

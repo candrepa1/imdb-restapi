@@ -11,6 +11,7 @@ const swaggerDocs = require("../swagger.json");
 const actorsRoutes = require("./routes/actors.routes");
 const directorsRoutes = require("./routes/directors.routes");
 const usersRoutes = require("./routes/users.routes");
+const path = require("path");
 
 // Logging errors
 const logger = require("morgan");
@@ -22,7 +23,7 @@ const mimetype = require("mime-types");
 
 const actorStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "./uploads/actors");
+		cb(null, path.resolve("./src/uploads/actors"));
 	},
 	filename: (req, file, cb) => {
 		const ext = mimetype.extension(file.mimetype);
