@@ -8,8 +8,6 @@ const {
 } = require("../controllers/actors.controller");
 const route = Router();
 
-const upload = multer({ storage: storage, limits: { fileSize: 1000000 } });
-
 //Endpoints
 route.get("/actors", list);
 route.get("/actors/:id", get);
