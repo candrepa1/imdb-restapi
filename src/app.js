@@ -36,7 +36,29 @@ const actorStorage = multer.diskStorage({
 	},
 });
 
-const upload = multer({ storage: actorStorage, limits: { fileSize: 1000000 } });
+const directorStorage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, path.resolve("./src/uploads/directors"));
+	},
+	filename: (req, file, cb) => {
+		const ext = mimetype.extension(file.mimetype);
+		if (ext === "jpg" || ext === "jpeg" || ext === "png") {
+			cb(null, `${file.fieldname}${Date.now()}-actor.${ext}`);
+		} else {
+			const fileError = new Error("The file format is not accepted");
+			cb(fileError, null);
+		}
+	},
+});
+
+const uploadActors = multer({
+	storage: actorStorage,
+	limits: { fileSize: 1000000 },
+});
+const uploadDirectors = multer({
+	storage: directorStorage,
+	limits: { fileSize: 1000000 },
+});
 
 // Middleware
 app.use(express.json());
@@ -63,13 +85,32 @@ app.get("/", (req, res) => res.json({ home: "working" }));
 app.use("/api/v1/", actorsRoutes);
 app.use("/api/v1/", directorsRoutes);
 app.use("/api/v1/", usersRoutes);
-app.post("/api/v1/gallery", upload.single("image"), (req, res) => {
-	try {
-		res.send(req.file);
-	} catch (error) {
-		res.status(400).json({ message: error.message });
+app.put(
+	"/api/v1/actors/:id/profile",
+	uploadActors.single("image"),
+	(req, res) => {
+		const id = req.params.id;
+		try {
+			res.send(req.file);
+		} catch (error) {
+			res.status(400).json({ message: error.message });
+		}
 	}
-});
+);
+app.put(
+	"/api/v1/directors/:id/profile",
+	uploadDirectors.single("image"),
+	(req, res) => {
+		const id = req.params.id;
+		try {
+			res.send(req.file);
+		} catch (error) {
+			res.status(400).json({ message: error.message });
+		}
+	}
+);
+
+app.post("/api/v1/login", (req, res) => {});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
